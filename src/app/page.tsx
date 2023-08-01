@@ -3,7 +3,6 @@
 import { CompletedList } from "@/components/CompletedList"
 import { Header } from "@/components/Header"
 import { Input } from "@/components/Input"
-import { TodoList } from "@/components/TodoList"
 import { InputProvider } from "@/contexts/InputContext"
 
 const Page = ()=> {
@@ -13,8 +12,6 @@ const Page = ()=> {
         <Header/>
         <InputProvider>
             <Input/>
-            <TodoList/>
-            <CompletedList/>
         </InputProvider>
       </div>
     </div>
