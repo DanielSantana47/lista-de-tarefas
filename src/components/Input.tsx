@@ -79,7 +79,7 @@ export const Input = ()=> {
             </div>
             
             {todoList.length > 0 && 
-                <section className="mx-auto px-1 lg:px-3 flex flex-col justify-center mt-16 gap-4 bg-transparent lg:w-2/3">
+                <section className="mx-auto px-1 lg:px-3 flex flex-col justify-center mt-12 gap-4 bg-transparent lg:w-2/3">
                     <h2 className="text-2xl text-emerald-500 mb-6 font-semibold">À fazer</h2>
                     {todoList.map(item=>(
                         <div key={item.id}>
@@ -91,7 +91,7 @@ export const Input = ()=> {
             }
 
             {completedList.length > 0 && 
-                <section className="lg:px-3 px-1 lg:w-2/3 mx-auto flex flex-col justify-center mt-16 gap-4">
+                <section className="lg:px-3 px-1 lg:w-2/3 mx-auto flex flex-col justify-center mt-12 mb-6 gap-4">
                     <h2 className="text-2xl text-slate-400 mb-6 font-semibold">Completo</h2>
                     {completedList.map(item=> (
                         <div key={item.id}>
