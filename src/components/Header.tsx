@@ -1,5 +1,3 @@
-import { ModeContext } from "@/contexts/InputContext";
-import { useContext } from "react";
 export const Header = ()=> {
     return(
         <header className="flex justify-center mt-8 mx-4">

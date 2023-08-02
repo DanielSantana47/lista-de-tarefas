@@ -1,16 +1,12 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { TodoItem } from "./TodoItem"
 import { CompletedItem } from "./CompletedItem"
-import { todo } from "node:test"
 
 export const Input = ()=> {
     type List = {
         text: string,
         id: number
     }
-
-    const STORAGE_KEY = 'savetodolist'
-    const STORAGE_KEY2 = 'savecompletedlist'
 
     const [input, setInput] = useState('')
     const [id, setId] = useState(0)
@@ -67,6 +63,8 @@ export const Input = ()=> {
 
         setTimeout(()=>handleDeleteCompletedItem(key), 0)
     }
+
+    
     return(
         <>
             <div className="w-full flex items-center justify-center mt-16">
