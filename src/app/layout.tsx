@@ -1,5 +1,9 @@
+"use client"
+
+import { useContext } from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
+import { ModeContext } from '@/contexts/InputContext'
 
 
 export const metadata: Metadata = {
@@ -12,9 +16,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+ 
   return (
     <html lang="en">
-      <body className='bg-violet-950 text-white'>{children}</body>
+      <body className="bg-zinc-800">{children}</body>
     </html>
   )
 }

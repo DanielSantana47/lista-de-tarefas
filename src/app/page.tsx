@@ -2,16 +2,18 @@
 
 import { Header } from "@/components/Header"
 import { Input } from "@/components/Input"
-import { InputProvider } from "@/contexts/InputContext"
+import { ModeContext, ModeProvider } from "@/contexts/InputContext"
+import { useContext } from "react"
 
 const Page = ()=> {
+
   return(
-    <div className="">
-      <div className="container mx-auto">
-        <Header/>
-            <Input/>
-      </div>
-    </div>
+          <div>
+            <div className="container mx-auto px-2">
+                <Header/>
+                <Input/>
+            </div>
+          </div>
   )
 }
 
