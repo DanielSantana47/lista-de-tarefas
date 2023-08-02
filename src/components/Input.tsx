@@ -1,7 +1,5 @@
-import { InputContext, InputProps } from "@/contexts/InputContext"
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { TodoItem } from "./TodoItem"
-import { MdDeleteForever } from "react-icons/md"
 import { CompletedItem } from "./CompletedItem"
 
 export const Input = ()=> {
@@ -11,39 +9,43 @@ export const Input = ()=> {
     }
 
     const [input, setInput] = useState('')
-    const [todoList, setTodoList] = useState<List[]>([])
+    const [id, setId] = useState(0)
+    const [todoList, setTodoList] = useState<List[]>([
+        {text: 'lavar o carro', id: 0}
+    ])
     const [completedList, setCompletedList] = useState<List[]>([])
 
 
     const handleAddButton = ()=> {
         if(input.trim() === '') return
         setTodoList(
-            [...todoList, {text: input, id: todoList.length}]
+            [...todoList, {text: input, id: id + 1}]
         )
-        console.log(todoList)
+        setId (id + 1)
         setInput('')
     }
-
+    
     const handleDeleteButton = (key: number)=> {
         setTodoList(
             todoList.filter(item=> (
                 item.id !== key
             ))
         )
+
     }
 
     const handleCheckItem = (key: number)=> {
-        setTodoList(
-            todoList.filter(item=> (
-                item.id !== key
-            ))
-        )
+        const completedItem = todoList.find(item=> item.id === key)
 
-        setCompletedList(
-            [...completedList, {text: todoList[key].text, id: todoList[key].id}]
-        )
+        if (completedItem) {
+            setCompletedList(
+                [...completedList, {id: completedItem.id, text: completedItem.text}]
+            )
+        }
+
+        setTimeout(()=>handleDeleteButton(key))
     }
-
+    
     const handleDeleteCompletedItem = (key: number)=> {
         setCompletedList(
             completedList.filter(item=>(
@@ -51,7 +53,6 @@ export const Input = ()=> {
             ))
         )
     }
-    
 
     return(
         <>
@@ -70,7 +71,9 @@ export const Input = ()=> {
                 <section className="w-2/3 mx-auto px-3 flex flex-col justify-center mt-16 shadow-xl gap-4">
                     <h2 className="text-2xl text-zinc-400 mb-6 font-semibold">To do</h2>
                     {todoList.map(item=>(
-                        <TodoItem id={item.id} text={item.text} deleteItem={()=>handleDeleteButton(item.id)} checkItem={()=>handleCheckItem(item.id)}/>
+                        <div key={item.id}>
+                            <TodoItem id={item.id} text={item.text} deleteItem={()=>handleDeleteButton(item.id)} checkItem={()=>handleCheckItem(item.id)}/>
+                        </div>
                     ))
                     }
                 </section>
@@ -80,7 +83,9 @@ export const Input = ()=> {
                 <section className="w-2/3 mx-auto px-3 flex flex-col justify-center mt-16 shadow-xl gap-4">
                     <h2 className="text-2xl text-zinc-400 mb-6 font-semibold">Completed</h2>
                     {completedList.map(item=> (
-                        <CompletedItem text={item.text} id={item.id} deleteItemCompleted={()=>handleDeleteCompletedItem(item.id)}/>
+                        <div key={item.id}>
+                            <CompletedItem text={item.text} id={item.id} deleteItemCompleted={()=>handleDeleteCompletedItem(item.id)}/>
+                        </div>
                     ))}
                 </section>
             }
