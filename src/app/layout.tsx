@@ -1,9 +1,7 @@
 "use client"
 
-import { useContext } from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
-import { ModeContext } from '@/contexts/InputContext'
 
 
 export const metadata: Metadata = {
