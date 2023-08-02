@@ -2,8 +2,6 @@
 
 import { Header } from "@/components/Header"
 import { Input } from "@/components/Input"
-import { ModeContext, ModeProvider } from "@/contexts/InputContext"
-import { useContext } from "react"
 
 const Page = ()=> {
 
